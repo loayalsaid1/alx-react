@@ -1,0 +1,5 @@
+.Notifications {
+	--color-main: #e0354b;
+	border: .3rem solid var(--color-main);
+	padding: 1rem;
+}
