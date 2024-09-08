@@ -1,0 +1,46 @@
+html {
+  font-size: 16px;
+}
+.App {
+  --color-main: #e0354b;
+  position: relative;
+  height: 100vh
+}
+
+.App-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-bottom: .3rem solid var(--color-main);
+
+  height: 15rem
+}
+
+.logo {
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.App-header h1 {
+  color: var(--color-main);
+  text-align: left;
+}
+
+.App-body {
+  text-align: left;
+  padding: 3rem;
+  font-size: 1.3rem;
+}
+
+.App-footer {
+  text-align: center;
+  padding: 1rem;
+  height: 3rem;
+  width: 100%;
+  border-top: .3rem solid var(--color-main);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
