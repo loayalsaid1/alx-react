@@ -3,7 +3,6 @@ html {
 }
 .App {
   --color-main: #e0354b;
-
   position: relative;
   height: 100vh
 }
