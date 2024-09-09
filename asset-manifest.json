@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/react-tutorial/static/css/main.1327b5d0.css",
-    "main.js": "/react-tutorial/static/js/main.1e43a169.js",
-    "index.html": "/react-tutorial/index.html",
-    "main.1327b5d0.css.map": "/react-tutorial/static/css/main.1327b5d0.css.map",
-    "main.1e43a169.js.map": "/react-tutorial/static/js/main.1e43a169.js.map"
+    "main.css": "/alx-react/static/css/main.e862f326.css",
+    "main.js": "/alx-react/static/js/main.911bc756.js",
+    "static/js/453.59b8a61b.chunk.js": "/alx-react/static/js/453.59b8a61b.chunk.js",
+    "static/media/holberton_logo.png": "/alx-react/static/media/holberton_logo.381ecf18dfa5bae7fc5d.png",
+    "index.html": "/alx-react/index.html",
+    "main.e862f326.css.map": "/alx-react/static/css/main.e862f326.css.map",
+    "main.911bc756.js.map": "/alx-react/static/js/main.911bc756.js.map",
+    "453.59b8a61b.chunk.js.map": "/alx-react/static/js/453.59b8a61b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1327b5d0.css",
-    "static/js/main.1e43a169.js"
+    "static/css/main.e862f326.css",
+    "static/js/main.911bc756.js"
   ]
 }
