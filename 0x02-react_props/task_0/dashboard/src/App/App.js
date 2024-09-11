@@ -18,10 +18,6 @@ function App() {
         <button type="button">Ok</button>
       </div>
 
-      <div className="App-footer">
-        <p>Copyright {getFullYear()} - {getFooterCopy(true)}</p>
-        
-      </div>
     </div>
   );
 }
