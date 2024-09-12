@@ -10,6 +10,7 @@ describe("<Footer />", () => {
 
 	it("Contains at least the Word 'Copyright'", () => {
 		const wrapper = shallow(<Footer />);
-		expect(wrapper.contains('Copyright')).toBe(true);
+		expect(wrapper.text()).toContain('Copyright');
 	})
 })
+
