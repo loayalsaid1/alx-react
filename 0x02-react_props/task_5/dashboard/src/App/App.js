@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import CourseList from '../CourseList/CourseList';
 import Footer from '../Footer/Footer';
-
+import { getLatestNotification } from '../utils/utils';
 
 function App({ isLoggedIn = false }) {
   const listCourses = [
@@ -15,9 +15,14 @@ function App({ isLoggedIn = false }) {
     {id: 3, name: 'React', credit: 40}
   ]
 
+  const listNotifications = [
+    {id: 1, type: 'default', value: 'New course available'},
+    {id: 2, type: 'default', value: 'New resume available'},
+    {id: 3, type: 'urgent', html: {__html: getLatestNotification()}},
+  ]
   return (
     <>
-    <Notifications />
+    <Notifications listNotifications={listNotifications} />
     <div className="App">
       <Header />
       <div className="App-body">

@@ -5,13 +5,15 @@ import CourseListRow from './CourseListRow';
 import './CourseList.css';
 
 function CourseList ({ listCourses = [] }) {
-    if (listCourses) {
-        const rows = <CourseListRow textFirstCell='No course available yet' />;
-    } else {
-        const rows = listCourses.map( course => {
-            <CourseListRow id={course.id} textFirstCell={course.name} textSecondCell={course.credit} />
-        })
-    }
+    const rows = listCourses.length
+        ? listCourses.map( course => (
+            <CourseListRow
+                key={course.id}
+                textFirstCell={course.name}
+                textSecondCell={course.credit}
+            />
+        ))
+        : <CourseListRow textFirstCell='No course available yet' />;
 
     return (
         <table id="CourseList">
@@ -31,3 +33,4 @@ CourseList.propTypes = {
 }
 
 export default CourseList;
+

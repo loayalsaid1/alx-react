@@ -1,16 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { getLatestNotification } from "../utils/utils";
 import NotificationItem from "./NotificationItem";
+import NotificationItemShape from "./NotificationItemShape";
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
 
 
-export default function Notifications({ displayDrawer = false }) {
+export default function Notifications({ displayDrawer = false, listNotifications = []}) {
   const handleCloseClick = () => {
     console.log("Close button has been clicked");
   };
 
+  const notificationsRows = listNotifications.length
+    ? listNotifications.map(item => {
+      return <NotificationItem key={item.id} html={item.html} value={item.value} type={item.type} />
+    })
+    : <NotificationItem value="No new notification for now" type="default" />
   return (
     
     <div className="Notifications_section">
@@ -19,11 +24,9 @@ export default function Notifications({ displayDrawer = false }) {
       </div>
       {displayDrawer &&
         <div className="Notifications">
-          <p>Here is the list of notifications</p>
+          { listNotifications.length > 0 && <p>Here is the list of notifications</p> }
           <ul>
-            <NotificationItem key="1" type="default" value="New course available" />
-            <NotificationItem key="2" type="default" value="New resume available" />
-            <NotificationItem key="3" type="urgent" html={{__html: getLatestNotification()}} />
+            {notificationsRows}
           </ul>
           <button
             className="close_button"
@@ -40,5 +43,6 @@ export default function Notifications({ displayDrawer = false }) {
 }
 
 Notifications.propTypes = {
-  displayDrawer: PropTypes.bool
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };

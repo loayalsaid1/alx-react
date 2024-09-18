@@ -34,4 +34,4 @@ CourseListRow.propTypes = {
 };
 
 export default CourseListRow;
-g
+
