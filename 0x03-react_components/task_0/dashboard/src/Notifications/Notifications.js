@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import NotificationItem from "./NotificationItem";
-import NotificationItemShape from "../NotificationItemShape";
+import NotificationItemShape from "./NotificationItemShape";
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
 
@@ -11,9 +11,9 @@ export default function Notifications({ displayDrawer = false, listNotifications
     console.log("Close button has been clicked");
   };
 
-  const notificationsRows = listNotifications.length 
+  const notificationsRows = listNotifications.length
     ? listNotifications.map(item => {
-      <NotificationItem id={item.id} html={item.html} value={item.value} type={item.value} />
+      return <NotificationItem key={item.id} html={item.html} value={item.value} type={item.type} />
     })
     : <NotificationItem value="No new notification for now" type="default" />
   return (
@@ -24,7 +24,7 @@ export default function Notifications({ displayDrawer = false, listNotifications
       </div>
       {displayDrawer &&
         <div className="Notifications">
-          <p>Here is the list of notifications</p>
+          { listNotifications.length > 0 && <p>Here is the list of notifications</p> }
           <ul>
             {notificationsRows}
           </ul>
@@ -44,5 +44,5 @@ export default function Notifications({ displayDrawer = false, listNotifications
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: NotificationItemShape
+  listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
