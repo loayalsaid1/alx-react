@@ -5,13 +5,13 @@ function getComponentName(wrappedComponent) {
 }
 
 
-function WithLogging(wrappedComponent) {
+export default function WithLogging(wrappedComponent) {
 	const wrappedComponentName = getComponentName(wrappedComponent);
 
 	class EnhancedComponent extends React.Component {
 		componentDidMount() {
 			console.log(
-				`Component ${wrappedComponentName} is moounted`
+				`Component ${wrappedComponentName} is mounted`
 				)
 		}
 
