@@ -70,18 +70,4 @@ describe("<App />", () => {
     alertSpy.mockRestore();
 	})
 
-
-
-
-  // 	it("calls the logOut function and displays the alert", () => {
-// 		const logOutSpy = jest.fn();
-// 		const alertMock = jest.spyOn(global, 'alert').mockImplementation(() => { });
-// 		const wrapper = mount(<App logOut={logOutSpy} isLoggedIn={true} />);
-// 		const event = new KeyboardEvent('keydown', { key: 'h', ctrlKey: true });
-// 		document.dispatchEvent(event);
-// 		expect(alertMock).toHaveBeenCalledWith('Logging you out');
-// 		expect(logOutSpy).toHaveBeenCalled();
-// 		wrapper.unmount();
-// 		jest.restoreAllMocks();
-// });
 });

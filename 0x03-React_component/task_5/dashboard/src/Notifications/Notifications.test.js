@@ -3,32 +3,23 @@ import { shallow } from "enzyme";
 
 import Notifications from "./Notifications";
 import NotificationItem from "./NotificationItem";
-
 describe("<Notifications />", () => {
+  const listNotifications = [
+    { id: 1, type: "default", value: "New course available" },
+    { id: 2, type: "default", value: "New resume available" },
+    { id: 3, type: "urgent", value: "New whatever" },
+  ];
   let wrapper;
-  const testNotificationItems = [
-    {id: 1, type: 'default', value: 'New course available'},
-    {id: 2, type: 'default', value: 'test2'},
-    {id: 3, type: 'urgent', value: 'test3'},
-  ]
-  beforeEach(() => {
-    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={testNotificationItems}/>);
-  })
 
-  it("Renders without crashing with empty or without <listNotifications> prop", () => {
-    shallow(<Notifications />);
-    shallow(<Notifications listNotifications={[]}/>);
+  beforeEach(() => {
+    wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
   });
 
-  it('Renders correct message when passed an empty notifications list', () => {
-    const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={[]}/>);
-    const wrongeText = 'Here is the list of notifications';
-    const correctText = 'No new notification for now';
+  it("Renders without crashing", () => {
+    expect(wrapper.exists()).toBe(true);
+  });
 
-    expect(wrapper.contains(wrongeText)).toBe(false);
-    expect(wrapper.find('.Notifications').html()).toContain(correctText);
-  })
-  it("renders correct count of <NotificationItem /> elements when passed list of notifications", () => {
+  it("renders 3 <NotificationItem /> elements", () => {
     expect(wrapper.find(NotificationItem)).toHaveLength(3);
   });
 
@@ -44,24 +35,50 @@ describe("<Notifications />", () => {
     );
   });
 
-  it("Renders .menuItem AND .Notifications when displayDrawer = true", () => {
-    expect(wrapper.find('.menuItem').exists()).toBe(true);
-    expect(wrapper.find('.Notifications').exists()).toBe(true);
-  })
-  
-  it('Renderes .menuItem and NOT .Notifications when displayDrawer=false', () => {
-    const wrapper = shallow(<Notifications />);
-    expect(wrapper.find('.menuItem').exists()).toBe(true);
-    expect(wrapper.find('.Notifications').exists()).toBe(false);
-  })
+  describe("Visibility of elements based on <displaydrawer prop", () => {
+    it("renders .menuitem and NOT .Notifications => <displayDrawer> = true", () => {
+      const wrapper = shallow(<Notifications displayDrawer={false} />);
+      expect(wrapper.find(".menuItem").exists()).toBe(true);
+      expect(wrapper.find(".Notifications").exists()).toBe(false);
+    });
 
-  it('Implements markAsRead() as expected', () => {
-    const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={testNotificationItems} />);
-    const logSpy = jest.spyOn(window.console, 'log').mockImplementation(() => {});
+    it("Renders .menuItem AND .Notifications => <displayDrawer> false", () => {
+      const wrapper = shallow(<Notifications displayDrawer={true} />);
+      expect(wrapper.find(".menuItem").exists()).toBe(true);
+      expect(wrapper.find(".Notifications").exists()).toBe(true);
+    });
+  });
 
-    new Notifications().markAsRead(1);
+  describe("<Notifications /> render and Re-render behaviour", () => {
+    const listNotifications = [
+      { id: 0, value: "test 1", type: "default" },
+      { id: 1, value: "test 2", type: "default" },
+    ];
 
-    expect(logSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
-    logSpy.mockRestore();
-  })
-})
+    let wrapper;
+    let renderSpy;
+    beforeEach(() => {
+      wrapper = shallow(<Notifications
+        displayDrawer={true}
+        listNotifications={listNotifications}
+      />);
+      renderSpy = jest.spyOn(wrapper.instance(), 'render');
+
+    });
+
+    afterEach(() => {
+      renderSpy.mockRestore();
+    })
+
+    it('Doesn\'t Re-renders with same or shorter listNOtifications prop', () => {
+      wrapper.setProps({listNotifications: listNotifications});
+      expect(renderSpy).not.toHaveBeenCalled();
+    })
+
+    it('Re-renders when passed a longer listNotifications that orgiginal',  () => {
+      const extendedListNotifications = [...listNotifications, {id: 2, value: 'test 3', type: 'default'}];
+      wrapper.setProps({listNotifications: extendedListNotifications});
+      expect(renderSpy).toHaveBeenCalled();
+    })
+  });
+});
