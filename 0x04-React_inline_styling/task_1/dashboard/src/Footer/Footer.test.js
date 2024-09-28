@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactWrapper, shallow } from 'enzyme';
 import Footer from './Footer';
+import '../suppressStyleInjection';
 
 describe("<Footer />", () => {
 	it("Rendres without creashing", () => {
@@ -13,4 +14,3 @@ describe("<Footer />", () => {
 		expect(wrapper.text()).toContain('Copyright');
 	})
 })
-

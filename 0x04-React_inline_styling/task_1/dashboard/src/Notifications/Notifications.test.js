@@ -1,8 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
-
+import '../suppressStyleInjection';
 import Notifications from "./Notifications";
 import NotificationItem from "./NotificationItem";
+
 describe("<Notifications />", () => {
   const listNotifications = [
     { id: 1, type: "default", value: "New course available" },

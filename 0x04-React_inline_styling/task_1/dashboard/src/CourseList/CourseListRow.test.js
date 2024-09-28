@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CourseListRow from "./CourseListRow";
+import '../suppressStyleInjection';
 
 describe("<CourseListRow />", () => {
   describe("when isHeader is true", () => {

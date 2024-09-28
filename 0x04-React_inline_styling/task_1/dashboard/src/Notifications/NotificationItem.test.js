@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NotificationItem from './NotificationItem';
+import '../suppressStyleInjection';
 
 describe("<NotificationItem />", () => {
 	afterAll(() => {
