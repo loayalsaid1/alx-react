@@ -2,8 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import NotificationItem from "./NotificationItem";
 import NotificationItemShape from "./NotificationItemShape";
+import {StyleSheet, css} from 'aphrodite';
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
+
+
+const styles = StyleSheet.create({
+  NotificationsSection: {
+    position: 'fixed',
+    top: '.3rem',
+    right: '.3rem',
+    zIndex: 1,
+    width: '25vw',
+    fontSize: '1rem',
+  }
+})
 
 export default class Notifications extends React.Component {
   constructor(props) {
@@ -49,7 +62,7 @@ export default class Notifications extends React.Component {
       <NotificationItem value="No new notification for now" type="default" />
     );
     return (
-      <div className="Notifications_section">
+      <div className={css(styles.NotificationsSection)}>
         <div className="menuItem">
           <p>Your notifications</p>
         </div>
