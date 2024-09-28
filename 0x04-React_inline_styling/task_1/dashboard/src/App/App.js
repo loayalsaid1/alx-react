@@ -38,6 +38,17 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     padding: '3rem',
     fontSize: '1.3rem'
+  },
+
+  AppFooter: {
+    textAlign: 'center',
+    padding: '1rem',
+    height: '3rem',
+    width: '100%',
+    borderTop: `.3rem solid ${cssVars.mainColor}`,
+    position: 'fixed',
+    bottom: 0,
+    left: 0
   }
 })
 
@@ -87,7 +98,7 @@ class App extends React.Component {
             </BodySectionWithMarginBottom>
           </div>
 
-          <div className="App-footer">
+          <div className={css(styles.AppFooter)} >
             <Footer />
           </div>
         </div>
