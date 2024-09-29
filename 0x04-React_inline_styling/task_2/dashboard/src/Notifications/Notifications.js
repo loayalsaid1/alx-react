@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   menuItem: {
     textAlign: 'right',
   },
-  NotificationsItemsBox: {
+  notificationItemsBox: {
 	border: '.1rem dashed ' + cssVars.mainColor,
 	padding: '1rem',
 	fontSize: 16,
@@ -92,7 +92,7 @@ export default class Notifications extends React.Component {
           <p>Your notifications</p>
         </div>
         {displayDrawer && (
-          <div className={css(styles.NotificationsItemsBox)}>
+          <div className={css(styles.notificationItemsBox)}>
             {listNotifications.length > 0 && (
               <p>Here is the list of notifications</p>
             )}

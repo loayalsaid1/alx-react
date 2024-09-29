@@ -14,12 +14,16 @@ describe("<NotificationItem />", () => {
 
 	it("renders correct HTML with dummy type and value props", () => {
 		const wrapper = shallow(<NotificationItem type="default" value="test" />);
-		expect(wrapper.html()).toEqual('<li data-notification-type="default">test</li>');
+		expect(wrapper.find('li')).toHaveLength(1);
+		expect(wrapper.text()).toEqual('test');
+		expect(wrapper.prop('data-notification-type')).toEqual('default')
 	});
 
 	it("Renders coorrect HMTL with passing html prop", () => {
 		const wrapper = shallow(<NotificationItem type="default" html={{__html: '<u>test</u>'}}/>);
-		expect(wrapper.html()).toEqual('<li data-notification-type="default"><u>test</u></li>');
+		expect(wrapper.find('li')).toHaveLength(1);
+		expect(wrapper.prop('data-notification-type')).toEqual('default')
+		expect(wrapper.render().html()).toEqual('<u>test</u>');
 	})
 	
 	it("Calls the markAsRead() passed as a prop with the right args when clicked on", () => {

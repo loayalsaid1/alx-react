@@ -5,10 +5,10 @@ import {StyleSheet, css} from 'aphrodite';
 
 const styles = StyleSheet.create({
   default: {
-    color: blue,
+    color: 'blue',
   },
   urgent: {
-    color: red
+    color: 'red'
   }
 })
 function NotificationItem({ type = "default", id, html, value, markAsRead = () => {} }) {
