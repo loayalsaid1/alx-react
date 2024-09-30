@@ -27,6 +27,23 @@ const styles = StyleSheet.create({
 	padding: '1rem',
 	fontSize: 16,
 	position: 'relative',
+  backgroundColor: 'white',
+  '@media (max-width: 600px)': {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    
+    fontSize: 20,
+  }
+  },
+  
+  NotificationsList: {
+    '@media (max-width: 600px)': {
+      paddingInlineStart: 0,
+      listStyle: 'none',
+    }
   },
   
   closeButton: {
@@ -97,7 +114,7 @@ export default class Notifications extends React.Component {
             {listNotifications.length > 0 && (
               <p>Here is the list of notifications</p>
             )}
-            <ul>{notificationsRows}</ul>
+            <ul className={css(styles.NotificationsList)}>{notificationsRows}</ul>
             <button
               className={css(styles.closeButton)}
               aria-label="Close"
