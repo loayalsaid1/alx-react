@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     right: '.3rem',
     zIndex: 1,
     width: '25vw',
+    minWidth: 350,
     fontSize: '1rem',
   },
   menuItem: {
