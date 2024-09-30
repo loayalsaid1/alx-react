@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types'
 import {StyleSheet, css} from 'aphrodite';
@@ -9,6 +8,14 @@ const styles = StyleSheet.create({
   },
   urgent: {
     color: 'red'
+  },
+  notificationItem: {
+    '@media (max-width: 600px)': {
+      width: '100%',
+      fontSize: 20,
+      borderBottom: '.1rem solid black',
+      padding: '10px 8px',
+    }
   }
 })
 function NotificationItem({ type = "default", id, html, value, markAsRead = () => {} }) {
@@ -16,9 +23,10 @@ function NotificationItem({ type = "default", id, html, value, markAsRead = () =
 	<li data-notification-type={type}
 	  dangerouslySetInnerHTML={html ? html : undefined}
     onClick={() => markAsRead(id)}
-    className={css(
-      type === 'default' ? styles.default : styles.urgent
-    )}
+    className={css([
+      type === 'default' ? styles.default : styles.urgent,
+      styles.notificationItem
+    ])}
     >
 	  {value}
 	</li>

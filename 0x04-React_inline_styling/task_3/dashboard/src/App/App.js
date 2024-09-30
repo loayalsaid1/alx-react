@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, css } from 'aphrodite';
-// import "./App.css";
+import './normalize.css'
 import Notifications from "../Notifications/Notifications";
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import Header from "../Header/Header";
