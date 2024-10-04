@@ -1,31 +1,37 @@
 import React from "react";
-import { StyleSheet, css } from 'aphrodite';
-
+import { StyleSheet, css } from "aphrodite";
 
 export default function Login() {
   return (
-    <>
+    <div className={css(styles.loginSection)}>
       <p>Login to access the full dashboard</p>
 
       {/* The login form */}
-        <label htmlFor="email">Email</label>
-        <input className={css(styles.inputField)} type="email" id="email" name="email" />
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+      />
 
-        <label htmlFor="password">Password</label>
-        <input className={css(styles.inputField)} type="password" id="password" name="password" />
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+      />
 
-        <button type="button">Ok</button>
-    </>
+      <button type="button">Ok</button>
+    </div>
   );
 }
 
 const styles = StyleSheet.create({
-  inputField: {
-    '@media (max-width: 900px)': {
-      ':after': {
-        content: '""',
-        display: 'block',
-      },
-    }
-  }
-})
+  loginSection: {
+    "@media (max-width: 900px)": {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
+  },
+});

@@ -70,4 +70,25 @@ describe("<App />", () => {
     alertSpy.mockRestore();
 	})
 
+  describe('Test displayDrawer state and functionality', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallow(<App />);
+    }) 
+
+    it("Has displayDrawer state, with false as default value", () => {
+      expect(wrapper.state('displayDrawer')).toBe(false);
+    })
+
+    it("Make displayDrawer true when calling handleDisplayDrawer", () => {
+      wrapper.instance().handleDisplayDrawer();
+      expect(wrapper.state('displayDrawer')).toBe(true);
+    })
+
+    it("Make displayDrawer false when calling handleHideDrawer", () => {
+      wrapper.instance().handleHideDrawer();
+      expect(wrapper.state('displayDrawer')).toBe(false);
+    })
+  })
+
 });
