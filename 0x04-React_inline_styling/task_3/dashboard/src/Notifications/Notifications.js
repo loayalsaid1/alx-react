@@ -119,7 +119,7 @@ export default class Notifications extends React.Component {
               className={css(styles.closeButton)}
               aria-label="Close"
               type="button"
-              onClick={this.handleCloseClick}
+              onClick={() => this.handleCloseClick()}
             >
               <img src={closeIcon} alt="Close Icon" className={css(styles.closeButtonImg)} />
             </button>
