@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
 	right: '.5rem',
 	padding: 0,
   },
+  
   closeButtonImg: {
 	width: '1rem',
 	height: '1rem'

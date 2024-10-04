@@ -35,13 +35,13 @@ describe("<Notifications />", () => {
   });
 
   describe("Visibility of elements based on <displaydrawer prop", () => {
-    it("renders .menuitem and NOT .Notifications => <displayDrawer> = true", () => {
+    it("renders .menuitem and NOT .Notifications => <displayDrawer> = false", () => {
       const wrapper = shallow(<Notifications displayDrawer={false} />);
       expect(wrapper.find('[className*="menuItem"]').exists()).toBe(true);
       expect(wrapper.find("[className*='notificationItemsBox']").exists()).toBe(false);
     });
 
-    it("Renders .menuItem AND .Notifications => <displayDrawer> false", () => {
+    it("Renders .Notifications AND NOT.menuItem => <displayDrawer> true", () => {
       const wrapper = shallow(<Notifications displayDrawer={true} />);
       /**
        * I don't know if this is a good way or not, but after using aphrodite and using inline testing.
@@ -58,7 +58,7 @@ describe("<Notifications />", () => {
        * And Sinse you are reading this right now.. I wish you a nice, productive life. with a purpose.
        * Good luck, and check my app first, it may help you with that. https://remindme-l.vercel.app
        */
-      expect(wrapper.find('[className*="menuItem"]').exists()).toBe(true);
+      expect(wrapper.find('[className*="menuItem"]').exists()).toBe(false);
       expect(wrapper.find("[className*='notificationItemsBox']").exists()).toBe(true);
     });
   });
