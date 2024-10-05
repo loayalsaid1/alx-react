@@ -25,7 +25,7 @@ describe("<Login />", () => {
 
   it("Have submit button disables by default", () => {
     const submitButton = wrapper.find('form input[type="submit"]');
- 
+
     expect(submitButton.prop("disabled")).toBe(true);
   });
 
