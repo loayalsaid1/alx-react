@@ -11,6 +11,7 @@ import CourseList from "../CourseList/CourseList";
 import Footer from "../Footer/Footer";
 import { getLatestNotification } from "../utils/utils";
 import UserContext, { defaultUser, defaultLogOut } from "./AppContext";
+import {displayNotificationDrawer, hideNotificationDrawer} from '../actions/uiActionCreators';
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -95,8 +96,8 @@ export class App extends React.Component {
           <Notifications
             listNotifications={this.state.listNotifications}
             markNotificationAsRead={this.markNotificationAsRead}
-            handleDisplayDrawer={this.handleDisplayDrawer}
-            handleHideDrawer={this.handleHideDrawer}
+            handleDisplayDrawer={this.props.handleDisplayDrawer}
+            handleHideDrawer={this.props.handleHideDrawer}
             displayDrawer={this.state.displayDrawer}            
           />
 
@@ -163,4 +164,10 @@ export const mapStateToProps = (state) => ({
   isLoggedIn: state.get('isUserLoggedIn')
 })
 
-export default connect(mapStateToProps)(App);
+
+export const mapDispatchToProps = {
+  handleDisplayDrawer: displayNotificationDrawer,
+  handleHideDrawer: hideNotificationDrawer,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
