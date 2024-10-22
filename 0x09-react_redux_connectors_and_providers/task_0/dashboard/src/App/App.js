@@ -18,7 +18,7 @@ const listCourses = [
   { id: 3, name: "React", credit: 40 },
 ];
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -132,11 +132,6 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  isLoggedIn: state.isUserLoggedIn
-}
-
-export default connect(mapStateToProps)(App);
 
 const cssVars = {
   mainColor: "#e0354b",
@@ -163,3 +158,9 @@ const styles = StyleSheet.create({
     left: 0,
   },
 });
+
+export const mapStateToProps = (state) => ({
+  isLoggedIn: state.get('isUserLoggedIn')
+})
+
+export default connect(mapStateToProps)(App);

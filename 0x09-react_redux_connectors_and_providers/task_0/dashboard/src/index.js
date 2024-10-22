@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import uiReducer from './reducers/uiReducer.js';
 
-const store = createStore(uiReducer);
+export const store = createStore(uiReducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

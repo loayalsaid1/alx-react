@@ -1,8 +1,9 @@
+
 import React from "react";
 import { mount, shallow } from 'enzyme';
 import { act } from 'react';
 import { defaultUser} from "./AppContext";
-import App from "./App";
+import { App, mapStateToProps } from "./App";
 import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
@@ -10,6 +11,7 @@ import CourseList from "../CourseList/CourseList";
 import Footer from "../Footer/Footer";
 import { mockListNotifications } from "../mockData";
 import '../suppressStyleInjection';
+import { fromJS } from 'immutable';
 
 
 describe("<App />", () => {
@@ -143,3 +145,14 @@ describe("<App />", () => {
     expect(wrapper.state('listNotifications')).toEqual(mockListNotifications.slice(1));
   })
 });
+
+describe("App => mapStateToProps", () => {
+  it('Returns correct object', () => {
+    let state = fromJS({
+      isUserLoggedIn: true,
+    })
+
+    const props = {isLoggedIn: true}
+    expect(mapStateToProps(state)).toEqual(props);
+  })
+})
