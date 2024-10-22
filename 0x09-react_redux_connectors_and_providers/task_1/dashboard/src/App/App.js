@@ -90,7 +90,7 @@ export class App extends React.Component {
             markNotificationAsRead={this.markNotificationAsRead}
             handleDisplayDrawer={this.props.handleDisplayDrawer}
             handleHideDrawer={this.props.handleHideDrawer}
-            displayDrawer={this.state.displayDrawer}
+            displayDrawer={this.props.displayDrawer}
           />
 
           <div className={css(styles.App)}>
@@ -138,6 +138,7 @@ App.propTypes = {
 
 export const mapStateToProps = (state) => ({
   isLoggedIn: state.get('isUserLoggedIn'),
+  displayDrawer: state.get('isNotificationDrawerVisible'),
 });
 
 export const mapDispatchToProps = (dispatch) => {
