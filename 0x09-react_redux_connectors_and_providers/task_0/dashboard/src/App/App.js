@@ -97,7 +97,7 @@ export class App extends React.Component {
             markNotificationAsRead={this.markNotificationAsRead}
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
-            displayDrawer={this.state.displayDrawer}            
+            displayDrawer={this.props.displayDrawer}            
           />
 
           <div className={css(styles.App)}>
@@ -160,7 +160,9 @@ const styles = StyleSheet.create({
 });
 
 export const mapStateToProps = (state) => ({
-  isLoggedIn: state.get('isUserLoggedIn')
+  isLoggedIn: state.get('isUserLoggedIn'),
+  displayDrawer: state.get('isNotificationDrawerVisible'),
 })
+
 
 export default connect(mapStateToProps)(App);
